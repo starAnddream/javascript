@@ -83,10 +83,10 @@ C:
  .css-operation{width:200px;height:200px;background:#eee;}  obj.addClass("css-operation")
 ```
 测试结果<br>
-测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值<br><br><br><br><br>
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br><br><br><br>
-A	2594	2486	1500	501	163	222	190	191<br><br><br>
-B	1000	953	547	190	79	28	15	86<br><br>
+测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值<br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br>
+A	2594	2486	1500	501	163	222	190	191<br>
+B	1000	953	547	190	79	28	15	86<br>
 C	843	672	407	111	21	17	16	31<br>
 结论
 性能排序：C>B>A
