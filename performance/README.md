@@ -62,13 +62,13 @@ A :
 B:
  blank.length && blank.slideUp();
 ```
-测试结果
-测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari
-A	6110	5610	1344	488	103	194	108	155
-B	0	0	0	0	0	0	0	0
-结论
-应该避免对空对象进行操作； 
+测试结果<br>
+测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值<br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br>
+A	6110	5610	1344	488	103	194	108	155<br>
+B	0	0	0	0	0	0	0	0<br>
+结论<br>
+应该避免对空对象进行操作； <br>
 
 * 【采用样式表，避免多次调整样式】
 
@@ -82,12 +82,12 @@ B:
 C:
  .css-operation{width:200px;height:200px;background:#eee;}  obj.addClass("css-operation")
 ```
-测试结果
-测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari
-A	2594	2486	1500	501	163	222	190	191
-B	1000	953	547	190	79	28	15	86
-C	843	672	407	111	21	17	16	31
+测试结果<br>
+测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值<br><br><br><br><br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br><br><br><br>
+A	2594	2486	1500	501	163	222	190	191<br><br><br>
+B	1000	953	547	190	79	28	15	86<br><br>
+C	843	672	407	111	21	17	16	31<br>
 结论
 性能排序：C>B>A
 样式和JS分离的方案性能最佳，适用于要同时设置多个样式的场景；
@@ -115,12 +115,12 @@ B:
 C:
  $.each(list,function(){   e=$(this); });
 ```
-测试结果
-测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari
-A	172	219	157	30	3	5	4	6
-B	219	234	203	41	4	6	5	8
-C	219	234	187	52	3	4	5	7
+测试结果<br>
+测试说明：1w次执行耗时，单位毫秒/ms,统计三次运行的平均值<br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br>
+A	172	219	157	30	3	5	4	6<br>
+B	219	234	203	41	4	6	5	8<br>
+C	219	234	187	52	3	4	5	7<br>
 结论
 总体上来说A>C>B
 方案A有大约25%的性能提升，但是不稳定；
@@ -135,11 +135,11 @@ Chrome、firefox下A方案的性能不稳定；
 很多常用的属性，比如id、name等都被浏览器原生实现，在JQuery中我们有时会用$(this).attr("id")的方式来获取id，这种方法的效率相比原生属性的获取效率而言，非常慢。
  $.each(list,function(){   //A   var id=$(this).attr("id");
    //B   var id=this.id; })
-测试结果
-测试说明：10w次执行耗时，单位毫秒/ms,统计三次运行的平均值
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari
-A	6880	7030	4220	1188	157	244	133	135
-B	310	310	150	27	4	5	17	3
+测试结果<br>
+测试说明：10w次执行耗时，单位毫秒/ms,统计三次运行的平均值<br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br>
+A	6880	7030	4220	1188	157	244	133	135<br>
+B	310	310	150	27	4	5	17	3<br>
 结论
 使用原生的API，可以极大的提高性能
 最佳实践
@@ -159,11 +159,11 @@ A:
 B:
  $("ul").delegate("li","click",function(){})
 ```
-测试结果
-测试说明：对1w个<li>标签进行click事件添加的耗时，单位毫秒/ms,统计三次运行的平均值
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari
-A	2156	2172	1922	312	103	173	141	117
-B	0	0	0	0	0	0	0	0
+测试结果<br>
+测试说明：对1w个<li>标签进行click事件添加的耗时，单位毫秒/ms,统计三次运行的平均值<br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br>
+A	2156	2172	1922	312	103	173	141	117<br>
+B	0	0	0	0	0	0	0	0<br>
 结论
 委托的性能优势是非常绝对的；
 最佳实践
