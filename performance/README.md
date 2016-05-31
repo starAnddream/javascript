@@ -19,18 +19,18 @@ ID选择器 $("#id")
 ```javascript 
  </tr> </table>
 ```
-测试结果
-测试方案：对每个脚本执行1w次，统计3次运行结果的平均值
-方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari
-$("#mytable td.target")	5150	5630	780	293	69	148	31	102
-$("#mytable .target")	5320	5780	940	297	61	141	32	101
-$("#mytable").find("td.target")	4840	5000	1250	387	95	205	73	157
-$("#mytable").find(".target")	5000	5150	1400	226	49	130	60	64
-$("#mytable td[target=target]")	16410	17660	940	406	89	166	35	120
-$("#mytable td:hidden")	25000	26720	23750	3638	632	1123	3434	569
-$("#target-td")	630	620	310	62	9	28	12	18
-$(".target")	10310	10790	940	207	36	181	47	44
-document.getElementById("target-td")	150	150	160	6	1	1	5	2
+测试结果<br>
+测试方案：对每个脚本执行1w次，统计3次运行结果的平均值<br>
+方案	IE6	IE7	IE8	IE9	chrome	firefox	opera	safari<br>
+$("#mytable td.target")	5150	5630	780	293	69	148	31	102<br>
+$("#mytable .target")	5320	5780	940	297	61	141	32	101<br>
+$("#mytable").find("td.target")	4840	5000	1250	387	95	205	73	157<br>
+$("#mytable").find(".target")	5000	5150	1400	226	49	130	60	64<br>
+$("#mytable td[target=target]")	16410	17660	940	406	89	166	35	120<br>
+$("#mytable td:hidden")	25000	26720	23750	3638	632	1123	3434	569<br>
+$("#target-td")	630	620	310	62	9	28	12	18<br>
+$(".target")	10310	10790	940	207	36	181	47	44<br>
+document.getElementById("target-td")	150	150	160	6	1	1	5	2<br>
 结论
 原生方法是最快的方法，如果可能，尽量选择用原生
 性能顺序：ID选择器 > 标签选择器 > 类选择器 > 属性选择器 > 伪类选择器
