@@ -201,4 +201,4 @@ cleanData方法在jQueryUI中也会定义，且会重写$.cleanData，增加一�
 1. 采用原生的dom.innerHTML
 2.在执行html()方法之前，先执行remove()方法
 
-本文出自 “安大叔性能测试” 博客，请务必保留此出处http://andashu.blog.51cto.com/8673810/1375329
+jQuery性能优化出自 “安大叔性能测试” 博客，请务必保留此出处http://andashu.blog.51cto.com/8673810/1375329
