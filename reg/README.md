@@ -1,5 +1,5 @@
 #javascript正则
-* <b>javascript中的正则表达式有两种<b><br>
+* javascript中的正则表达式有两种<br>
 对象构造函数
 ```javascript
 var reg1=new RegExp("[A-Z]","g");
