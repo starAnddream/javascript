@@ -1,4 +1,7 @@
-#web Worker 多线程编程
+#web Worker 多线程编程---转移密集型任务
+应用：编码解码大字符串
+      复杂数学运算（图像、视频处理）
+      大数组排序等
 
 * W3C 在 HTML5 的规范中提出了工作线程（Web Worker）的概念，工作线程允许开发人员编写能够长时间运行而不被用户所中断的后台程序， 去执行事务或者逻辑，并同时保证页面对用户的及时响应。本文深入 HTML5 多线程规范，讲述多线程实现原理、方法，同时以实例的形式讲解 HTML5 中多线程编程以及应用。
 * Worker 的三大主要特征：能够长时间运行（响应），理想的启动性能以及理想的内存消耗。
@@ -135,10 +138,10 @@
 
 在工作线程的生命周期中，定义了下面四种不同类型的线程名称，用以标识它们在线程的整个生命周期中的不同状态：
 
-当一个工作线程的文档对象列举不为空的时候，这个工作线程会被称之为许可线程。（A worker is said to be a permissible worker if its list of the worker's Documents is not empty.）
-当一个工作线程是许可线程并且或者拥有数据库事务或者拥有网络连接或者它的工作线程列表不为空的时候，这个工作线程会被称之为受保护的线程。（A worker is said to be a protected worker if it is a permissible worker and either it has outstanding timers, database transactions, or network connections, or its list of the worker's ports is not empty）
-当一个工作线程的文档对象列表中的任何一个对象都是处于完全活动状态的时候，这个工作线程会被称之为需要激活线程。（A worker is said to be an active needed worker if any of the Document objects in the worker's Documents are fully active.）
-当一个工作线程是一个非需要激活线程同时又是一个许可线程的时候，这个工作线程会被称之为挂起线程。（A worker is said to be a suspendable worker if it is not an active needed worker but it is a permissible worker.）
+当一个工作线程的文档对象列举不为空的时候，这个工作线程会被称之为许可线程。（A worker is said to be a permissible worker if its list of the worker's Documents is not empty.）<br>
+当一个工作线程是许可线程并且或者拥有数据库事务或者拥有网络连接或者它的工作线程列表不为空的时候，这个工作线程会被称之为受保护的线程。（A worker is said to be a protected worker if it is a permissible worker and either it has outstanding timers, database transactions, or network connections, or its list of the worker's ports is not empty）<br>
+当一个工作线程的文档对象列表中的任何一个对象都是处于完全活动状态的时候，这个工作线程会被称之为需要激活线程。（A worker is said to be an active needed worker if any of the Document objects in the worker's Documents are fully active.）<br>
+当一个工作线程是一个非需要激活线程同时又是一个许可线程的时候，这个工作线程会被称之为挂起线程。（A worker is said to be a suspendable worker if it is not an active needed worker but it is a permissible worker.）<br>
 
 
 
