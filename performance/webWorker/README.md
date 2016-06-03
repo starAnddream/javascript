@@ -63,7 +63,7 @@
      3. worker.port.postMessage({ username: 'usertext'; live_city: 
      ['data-one', 'data-two', 'data-three','data-four']});
 ```
-    上面示例代码中，第一个我们使用 onmessage 事件处理器来接收消息，第二个使用 postMessage 来发送普通文本数据，第三个使用 postMessage 来发送结构化的数据，这里我们使用了 JSON 数据格式。
+上面示例代码中，第一个我们使用 onmessage 事件处理器来接收消息，第二个使用 postMessage 来发送普通文本数据，第三个使用 postMessage 来发送结构化的数据，这里我们使用了 JSON 数据格式。
 
 ###工作线程事件处理模型
 
