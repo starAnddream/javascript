@@ -15,20 +15,19 @@
 ```javascript
      var worker = new Worker('dedicated.js');
 ```
-    与一个专用线程通信：
+* 与一个专用线程通信：
 
-    专用线程在运行的过程中会在后台使用 MessagePort 对象，而 MessagePort 对象支持 HTML5 中多线程提供的所有功能，例如：可以发送和接受结构化数据（JSON 等），传输二进制数据，并且支持在不同端口中传输数据等。
-
-    为了在页面主程序接收从专用线程传递过来的消息，我们需要使用工作线程的 onmessage 事件处理器，定义 onmessage 的实例代码如下：
-    清单 2. 接收来至工作线程示例代码
+专用线程在运行的过程中会在后台使用 MessagePort 对象，而 MessagePort 对象支持 HTML5 中多线程提供的所有功能，例如：可以发送和接受结构化数据（JSON 等），传输二进制数据，并且支持在不同端口中传输数据等。
+为了在页面主程序接收从专用线程传递过来的消息，我们需要使用工作线程的 onmessage 事件处理器，定义 onmessage 的实例代码如下：
+2. 接收来至工作线程示例代码
 ```javascript
      worker.onmessage = function (event) { ... };
 ```
-    另外，开发人员也可以选择使用 addEventListener 方法，它最终的实现方式和作用和 onmessage 相同。
+另外，开发人员也可以选择使用 addEventListener 方法，它最终的实现方式和作用和 onmessage 相同。
 
-    就像前面讲述的，专用线程会使用隐式的 MessagePort 实例，当专用线程被创建的时候，MessagePort 的端口消息队列便被主动启用。因此，这也和工作线程接口中定义的 start 方法作用一致。
+就像前面讲述的，专用线程会使用隐式的 MessagePort 实例，当专用线程被创建的时候，MessagePort 的端口消息队列便被主动启用。因此，这也和工作线程接口中定义的 start 方法作用一致。
 
-    如果要想一个专用线程发送数据，那么我们需要使用线程中的 postMessage 方法。专用线程不仅仅支持传输二进制数据，也支持结构化的 JavaScript 数据格式。在这里有一点需要注意，为了高效地传输 ArrayBuffer 对象数据，需要在 postMessage 方法中的第二个参数中指定它。实例代码如下：
+如果要想一个专用线程发送数据，那么我们需要使用线程中的 postMessage 方法。专用线程不仅仅支持传输二进制数据，也支持结构化的 JavaScript 数据格式。在这里有一点需要注意，为了高效地传输 ArrayBuffer 对象数据，需要在 postMessage 方法中的第二个参数中指定它。实例代码如下：
     清单 3. 高效的发送 ArrayBuffer 数据代码
 ```javascript
      worker.postMessage({ 
@@ -40,20 +39,20 @@
 ```
 ###共享线程 Shared Worker
 
-    共享线程
+共享线程
 
-    共享线程可以由两种方式来定义：一是通过指向 JavaScript 脚本资源的 URL 来创建，而是通过显式的名称。当由显式的名称来定义的时候，由创建这个共享线程的第一个页面中使用 URL 会被用来作为这个共享线程的 JavaScript 脚本资源 URL。通过这样一种方式，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
+共享线程可以由两种方式来定义：一是通过指向 JavaScript 脚本资源的 URL 来创建，而是通过显式的名称。当由显式的名称来定义的时候，由创建这个共享线程的第一个页面中使用 URL 会被用来作为这个共享线程的 JavaScript 脚本资源 URL。通过这样一种方式，它允许同域中的多个应用程序使用同一个提供公共服务的共享线程，从而不需要所有的应用程序都去与这个提供公共服务的 URL 保持联系。
 
-    无论在什么情况下，共享线程的作用域或者是生效范围都是由创建它的域来定义的。因此，两个不同的站点（即域）使用相同的共享线程名称也不会冲突。
-    共享线程的创建
+无论在什么情况下，共享线程的作用域或者是生效范围都是由创建它的域来定义的。因此，两个不同的站点（即域）使用相同的共享线程名称也不会冲突。
+共享线程的创建
 
-    创建共享线程可以通过使用 SharedWorker() 构造函数来实现，这个构造函数使用 URL 作为第一个参数，即是指向 JavaScript 资源文件的 URL，同时，如果开发人员提供了第二个构造参数，那么这个参数将被用于作为这个共享线程的名称。创建共享线程的代码示例如下：
+创建共享线程可以通过使用 SharedWorker() 构造函数来实现，这个构造函数使用 URL 作为第一个参数，即是指向 JavaScript 资源文件的 URL，同时，如果开发人员提供了第二个构造参数，那么这个参数将被用于作为这个共享线程的名称。创建共享线程的代码示例如下：
 ```javascript
     var worker = new SharedWorker('sharedworker.js', ’ mysharedworker ’ );
 ```
     与共享线程通信
 
-    共享线程的通信也是跟专用线程一样，是通过使用隐式的 MessagePort 对象实例来完成的。当使用 SharedWorker() 构造函数的时候，这个对象将通过一种引用的方式被返回回来。我们可以通过这个引用的 port 端口属性来与它进行通信。发送消息与接收消息的代码示例如下：
+共享线程的通信也是跟专用线程一样，是通过使用隐式的 MessagePort 对象实例来完成的。当使用 SharedWorker() 构造函数的时候，这个对象将通过一种引用的方式被返回回来。我们可以通过这个引用的 port 端口属性来与它进行通信。发送消息与接收消息的代码示例如下：
     清单 4. 发送消息与接收消息代码
 ```javascript
      // 从端口接收数据 , 包括文本数据以及结构化数据
@@ -136,10 +135,10 @@
 
 在工作线程的生命周期中，定义了下面四种不同类型的线程名称，用以标识它们在线程的整个生命周期中的不同状态：
 
-    当一个工作线程的文档对象列举不为空的时候，这个工作线程会被称之为许可线程。（A worker is said to be a permissible worker if its list of the worker's Documents is not empty.）
-    当一个工作线程是许可线程并且或者拥有数据库事务或者拥有网络连接或者它的工作线程列表不为空的时候，这个工作线程会被称之为受保护的线程。（A worker is said to be a protected worker if it is a permissible worker and either it has outstanding timers, database transactions, or network connections, or its list of the worker's ports is not empty）
-    当一个工作线程的文档对象列表中的任何一个对象都是处于完全活动状态的时候，这个工作线程会被称之为需要激活线程。（A worker is said to be an active needed worker if any of the Document objects in the worker's Documents are fully active.）
-    当一个工作线程是一个非需要激活线程同时又是一个许可线程的时候，这个工作线程会被称之为挂起线程。（A worker is said to be a suspendable worker if it is not an active needed worker but it is a permissible worker.）
+当一个工作线程的文档对象列举不为空的时候，这个工作线程会被称之为许可线程。（A worker is said to be a permissible worker if its list of the worker's Documents is not empty.）
+当一个工作线程是许可线程并且或者拥有数据库事务或者拥有网络连接或者它的工作线程列表不为空的时候，这个工作线程会被称之为受保护的线程。（A worker is said to be a protected worker if it is a permissible worker and either it has outstanding timers, database transactions, or network connections, or its list of the worker's ports is not empty）
+当一个工作线程的文档对象列表中的任何一个对象都是处于完全活动状态的时候，这个工作线程会被称之为需要激活线程。（A worker is said to be an active needed worker if any of the Document objects in the worker's Documents are fully active.）
+当一个工作线程是一个非需要激活线程同时又是一个许可线程的时候，这个工作线程会被称之为挂起线程。（A worker is said to be a suspendable worker if it is not an active needed worker but it is a permissible worker.）
 
 
 
