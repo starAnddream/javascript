@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<body>
+<p id="text"></p>
+<script type="text/javascript">
+var img=document.createElement("img");
+var p=document.getElementById("text");
+img.setAttribute("src","./timg.jpg");
+var alpha=0,
+       beta=0,
+	   gamma=0;
+function handleOrentation(event){
+       alpha=event.alpha,
+       beta=event.beta,
+	   gamma=event.gamma;
+}
+function writePosition(){
+    img.style.webkitTransform="rotateZ("+ alpha +"deg)rotateX("+ beta +"deg)rotateY("+ gamma +"deg)";
+	p.innerHTML="rotateZ:" + alpha +"rotateX:" + beta + "rotateY:"+ gamma;
+}
+document.body.appendChild(img);
+window.addEventListener("deviceorientation",handleOrentation,false);
+window.setInterval(writePosition,300);
+</script>
+</body>
+</html>
