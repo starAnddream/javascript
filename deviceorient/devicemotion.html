@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+	<head>
+	<meta content="width=device-width, initial-scale=1" name="viewport">
+	</head>
+	<body>
+		<script>
+   var p1=document.createElement("p"),
+	   p2=document.createElement("p"),
+       acc=0,
+       Maxacc=0,
+	   accGravity=0,
+	   MaxaccGravity=0;
+function handleDeviceMotion(event){
+       acc=event.acceleration,//加速度
+	   Maxacc=Math.max(acc.x,acc.y,acc.z);
+	   accGravity=event.accelerationIncludingGravity;//包含重力加速度
+	   MaxaccGravity=Math.max(accGravity.x,accGravity.y,accGravity.z);
+}
+function writeSpeed(){
+	p1.innerHTML="Current acceleration:"+ Maxacc + "m/s^2";
+	p2.innerHTML="include gravity:"+ MaxaccGravity + "m/s^2";
+}
+document.body.appendChild(p1);
+document.body.appendChild(p2);
+window.addEventListener("devicemotion",handleDeviceMotion,false);
+window.setInterval(writeSpeed,300);
+		</script>
+	</body>
+</html>
