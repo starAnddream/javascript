@@ -1,0 +1,54 @@
+<!doctype html>
+<html>
+  <head>
+  <title>multipart XHR</title>
+  </head>
+  <body>
+  <h1>multipart XHR</h1>
+  <div id="container">
+  </div>
+   <script type="text/javascript">
+      
+var stack=[];
+function ajax(url,callback){
+	var req=new XMLHttpRequest(),
+	    LOAD_STATE=4,
+	    OK_STATUS=200;
+	if(!navigator.onLine){
+		  stack.push(arguments);
+	}else{
+		  req.onreadystatechange=function(){
+	    if(req.readyState !== LOAD_STATE){
+	         return;
+	      }
+	    if(req.status === OK_STATUS){
+		     callback(req.responseText)
+		  }
+	  };
+	    req.open("GET",url);
+	    req.send();
+		  }
+	  }
+function clearStack(){
+   while(stack.length){
+   //shift方法选出数组的第一项，并返回此值（不包含第一项）
+      ajax.apply(this,stack.shift());
+}
+}	  
+	  function splitImages(imageString){
+	  //将响应字符串进行分割
+		var imageData = imageString.split(" + ");
+		var imageElement;
+		for(var i=0,len=imageData.length;i<len;i++){
+			imageElement=document.createElement('img');
+			//imageElement.src='data:' + mimeType + ';base64,'+ data;将图片转换为浏览器可用的资源
+			imageElement.src='data:image/jpeg;base64,'+ imageData[i];
+			console.log(imageElement.src.length);
+			document.getElementById('container').appendChild(imageElement);
+			}
+	  }
+window.addEventListener("online",clearStack,false);
+ajax("images.php",splitImages);
+   </script>
+  </body>
+</html>
