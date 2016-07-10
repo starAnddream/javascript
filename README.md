@@ -4,7 +4,9 @@
 不会开始下载任何其他内容.任何已经在进程中的下载都不会被阻塞。（主要原因是因为脚本中可能有代码会改变Dom树，或者存在脚本之间的依赖）</br>
 ## 避免因阻塞导致的减速
 * XHR Eval
+https://github.com/starAnddream/javascript/blob/master/performance/script/XHR_eval.html
 * XHR注入
+https://github.com/starAnddream/javascript/blob/master/performance/script/XHR.html
 * Script in Iframe
 ```javascript
 <iframe src="script.html"width=0 height=0 frameborder=0 id="frame"></iframe>
@@ -19,7 +21,7 @@ document.getElementsByTagName('head')[0].appendChild(scriptEle);
 ```javascript
 <script defer src="a.js"></script>
 ```
-* document.write Script tag
+* document.write Script tag`虽然多个脚本会并行下载（所有document.write都在一个script语句块中）但浏览器依然会阻碍其他类型的资源`
 ```javascript
 document.write("<script src="a.js"type="text/javascript"></script>");
 ```
