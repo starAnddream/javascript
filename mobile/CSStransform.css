@@ -1,0 +1,10 @@
+#不把图片加载至内存而加载至显存，显存里的图片处理是硬件加速的
+#用于令页面中的可视化元素不存放在常规内存
+#注意：同一图像用硬件处理合成所占用的显存是内存处理的四倍（要相应分开rgba在GPU中进行处理）
+.element{
+-webkit-transform:translateZ(0);
+-moz-transform:translateZ(0);
+-ms-transform:translateZ(0);
+-o-transform:translateZ(0);
+transform:translateZ(0);
+}
