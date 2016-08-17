@@ -12,5 +12,16 @@ var reg2=/[A-Z]/g
 ###replace还有一种鲜为人知的用法，就是第二个参数传函数
 每出现一次匹配到的字符串，就执行一遍该函数<br>
 demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
-#eg:
-match(/(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])[a-zA-Z0-9]{6,32}/g)
+##字符类
+```javascript
+\w        任何ASCII字符等价于【a-zA-Z0-9】
+\W        非ASCII字符
+\d        数字 [0-9]
+\D        非数字
+\s        空白
+\S        非空白
+.         除换行符与终止符的任意字符
+[....]    括号内的任意字符
+[^...]    不包含括号内的任意字符
+```
+eg:/[\s\d]/匹配任意空白符或者数字
