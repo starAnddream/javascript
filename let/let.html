@@ -1,0 +1,16 @@
+<html>
+<script type="application/javascript; version=1.7">
+(function() {
+  var varTest = 'test var OK.';
+  let letTest = 'test let OK.';
+
+  {
+    var varTest = 'varTest changed.';
+    let letTest = 'letTest changed.';
+  }
+
+  console.log(varTest); //输出"varTest changed."，内部"{}"中声明的varTest变量覆盖外部的letTest声明
+  console.log(letTest); //输出"test let OK."，内部"{}"中声明的letTest和外部的letTest不是同一个变量
+}());
+</script>
+</html>
