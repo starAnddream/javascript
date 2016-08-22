@@ -52,3 +52,8 @@
   console.log(letTest); //输出"test let OK."，内部"{}"中声明的letTest和外部的letTest不是同一个变量
 }());
 ````
+##let现在还不是ECMAScript的规范，谷歌的支持性不是很好。
+* JavaScript1.7中let的出现解决了JavaScript中缺少块级作用域的短板，谷歌中引入let会报错可以引入版本号
+```javascript
+<script type="application/javascript version=1.7">
+```
