@@ -9,7 +9,7 @@ if(correct){
 alert("hi,"+name);
 }
 `````
-##showModalDialog()
+##模态对话框showModalDialog()
 * arg1:用于提供对话框HTML内容的URL
 * arg2:数组或对象，由window。dialogArguments属性值访问
 * arg3:设置对话框样式，dialogwidth,dialogheight,resizable=yes;
