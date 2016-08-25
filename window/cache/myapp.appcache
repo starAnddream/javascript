@@ -1,0 +1,9 @@
+CACHE MANIFEST
+CACHE:
+index.html
+
+FALLBACK:
+videos/  offline_help.html
+
+NETWORK:
+cgi/
