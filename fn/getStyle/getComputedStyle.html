@@ -1,0 +1,31 @@
+<html>
+<head>
+<meta charset="utf-8">
+<style>
+</style>
+</head>
+<body>
+<p onclick="scale(this,1.5)">字体大小</p>
+<div onclick="scaleColor(this,0.4)" style="width:300px;height:300px;background:#23ac5a"></div>
+<script>
+function scale(e,factor){
+var size=parseInt(window.getComputedStyle(e,"").fontSize);
+e.style.fontSize=factor * size +"px";
+}
+function scaleColor(e,factor){
+var color=window.getComputedStyle(e,"").backgroundColor;
+
+var components=color.match(/[\d\.]+/g);
+for(var i=0;i<3;i++){
+var x=Number(components[i]) * factor;
+x=Math.round(Math.min(Math.max(x,0),255));
+components[i]=String(x);
+}
+if(components.length==3){
+e.style.backgroundColor="rgb("+components.join()+")";
+}
+else e.style.backgroundColor="rgba("+components.join()+")";
+}
+</script>
+</body>
+</html>
