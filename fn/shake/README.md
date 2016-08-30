@@ -57,3 +57,9 @@ if(oncomplete)oncomplete(e);
 
 </script>
 ```
+##使用css3过渡属性transition代替fadeOut()
+```css
+.fadeable{
+transition:opacity 0.5s ease-in
+}
+```
