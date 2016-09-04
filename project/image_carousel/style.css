@@ -1,0 +1,20 @@
+.slider_child{
+	position:absolute;
+	list-style:none;
+}
+.slider_1,.slider_2,.slider_3{
+	 -webkit-transition: all 0.4s ease-out;
+      -moz-transition: opacity 0.8s ease-out; 
+      -ms-transition: opacity 0.8s ease-out; 
+      transition: opacity 0.8s ease-out; 
+	opacity:0;
+}
+.slider[data-animation-step="1"] .slider_1{
+	opacity:1;
+}
+.slider[data-animation-step="2"] .slider_2{
+	opacity:1;
+}
+.slider[data-animation-step="3"] .slider_3{
+	opacity:1;
+}
