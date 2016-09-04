@@ -1,0 +1,8 @@
+<script>
+function cssStyle(sName){
+return sName.replace(/\-(\w)(\w+)/g,function(a,b,c){
+return b.toUpperCase()+c.toLowerCase();
+}).replace(/^\-/,' ');
+}
+console.log(cssStyle("background-color-image"));
+</script>
