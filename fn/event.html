@@ -1,0 +1,19 @@
+<ul id="parent-list">
+	<li id="post-1">Item 1</li>
+	<li id="post-2">Item 2</li>
+	<li id="post-3">Item 3</li>
+	<li id="post-4">Item 4</li>
+	<li id="post-5">Item 5</li>
+	<li id="post-6">Item 6</li>
+</ul>
+<script>
+// 找到父元素，添加监听器...
+document.getElementById("parent-list").addEventListener("click",function(e) {
+	// e.target是被点击的元素!
+	// 如果被点击的是li元素
+	if(e.target && e.target.nodeName == "LI") {
+		// 找到目标，输出ID!
+		console.log("List item ",e.target.id," was clicked!");
+	}
+});
+</script>
