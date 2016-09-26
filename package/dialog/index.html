@@ -10,27 +10,192 @@
 <style>
 *{margin:0;padding:0}
 body{font-size:12px;padding:20px;}
-/*button{display:black;width:100%;padding:10px;margin:20px 0;background-color:green;
+button{display:black;width:100%;padding:10px;margin:20px 0;background-color:green;
        border-radius:10px;color:#fff;
-}*/
+}
 </style>
 <link rel="stylesheet" type="text/css" href="dialog.css"/>
 </head>
 <body>
-<div class="g-dialog-container">
+<!--<div class="g-dialog-container">
 	<div class="dialog-window">
 		<div class="dialog-header"></div>
 		<div class="dialog-content">你是否要清除购物车</div>
 		<div class="dialog-footer">
-			<button>按钮一</button>
-			<button>按钮二</button>
+			<button class="green">按钮一</button>
+			<button class="red">按钮二</button>
 		</div>
 	</div>
-</div>
-<!--<button id="btn1">没有传递任何参数</button>
+</div>-->
+<button id="btn1">没有传递任何参数</button>
 <button id="btn2">弹出一个不带按钮的警告框，并且两秒后关闭</button>
 <button id="btn3">有一个确认和取消按钮，点击按钮直接关闭</button>
 <button id="btn4">有一个多组合的按钮框</button>
--->
+<button id="btn5">弹出确认删除框，点击确认弹出危险框点击关闭全部关闭</button>
+<button id="btn6">动画弹框，从小到大</button>
+<button id="btn7">弹出一个不带按钮的警告框，并且两秒后关闭,延时函数</button>
+<script src="./script/zepto.js"></script>
+<script src="./script/dialog.js"></script>
+<script>
+$("#btn1").tap(function(){
+var d=$.dialog();
+})
+$("#btn2").tap(function(){
+var d=$.dialog(
+{
+			delay:2000,
+			
+			//弹框类型
+			type:"ok",
+			//描述文字
+			message:"hello lizhiguo",
+			//尺寸
+			width:200,
+			//对话框遮罩层透明度
+			maskOpacity:0.2,
+			animate:true
+})
+})
+$("#btn3").tap(function(){
+var d=$.dialog(
+{
+            //多久关闭
+			delay:0,
+			//弹框类型
+			type:"warning",
+			
+			//按钮组
+			buttons:[
+			{type:"red",
+			 text:"确定",
+			 callback:function(){return false;}
+			},
+			{type:"green",
+			 text:"关闭",
+			callback:function(){return true}
+			}
+			],
+			//描述文字
+			message:"hello lizhiguo",
+			//尺寸
+			width:200,
+			//对话框遮罩层透明度
+			maskOpacity:0.2
+})
+});
+$("#btn4").tap(function(){
+var d=$.dialog(
+{
+            //多久关闭
+			delay:0,
+			//弹框类型
+			type:"ok",
+			//按钮组
+			buttons:[
+			{type:"red",
+			 text:"确定",
+			 callback:function(){return false;}
+			},
+			{type:"green",
+			 text:"取消",
+			callback:function(){return true}
+			},
+			{
+			 text:"删除",
+			callback:function(){return true}
+			}
+			],
+			//描述文字
+			message:"hello lizhiguo",
+			//尺寸
+			width:200,
+			//对话框遮罩层透明度
+			maskOpacity:0.2
+})
+});
+$("#btn5").tap(function(){
+var d=$.dialog(
+{
+            //多久关闭
+			delay:0,
+			//弹框类型
+			type:"ok",
+			
+			//按钮组
+			buttons:[
+			{type:"red",
+			 text:"确定",
+			 callback:function(){
+			 $.dialog({
+			 type:"warning",
+			 buttons:[{
+			 type:"red",text:"关闭",callback:function(){
+			 d.close();
+			 return true;
+			 }}]});
+			}},
+			{
+			 text:"删除",
+			callback:function(){return true}
+			}
+			],
+			//描述文字
+			message:"hello lizhiguo",
+			//尺寸
+			width:200,
+			//对话框遮罩层透明度
+			maskOpacity:0.2
+})
+});
+$("#btn6").tap(function(){
+var d=$.dialog(
+{
+            //多久关闭
+			delay:0,
+			//弹框类型
+			type:"ok",
+			
+			//按钮组
+			buttons:[
+			{type:"red",
+			 text:"确定",
+			 callback:function(){return false;}
+			},
+			{type:"green",
+			 text:"取消",
+			callback:function(){return true}
+			},
+			{
+			 text:"删除",
+			callback:function(){return true}
+			}
+			],
+			//描述文字
+			message:"从小到大变化哦！",
+			//尺寸
+			width:200,
+			//对话框遮罩层透明度
+			maskOpacity:0.2,
+			//是否动画
+			animate:true
+})
+});
+$("#btn7").tap(function(){
+var d=$.dialog(
+{
+			delay:2000,
+			delayCallback:function(){alert(111)},
+			//弹框类型
+			type:"ok",
+			//描述文字
+			message:"hello lizhiguo",
+			//尺寸
+			width:200,
+			//对话框遮罩层透明度
+			maskOpacity:0.2,
+			animate:true
+})
+});
+</script>
 </body>
 </html>
