@@ -111,9 +111,9 @@ ftp:taobao.com
 ```
 reg:.+(:)<br/>
 result:<br/>
-<b>https:</b>taobao.com
-<b>http:</b>taobao.com
-<b>ftp:</b>taobao.com
+<b>https:</b>taobao.com<br/>
+<b>http:</b>taobao.com<br/>
+<b>ftp:</b>taobao.com<br/>
 <p>如果我们不想包含冒号</p>
 ```html
 https:taobao.com
@@ -122,6 +122,6 @@ ftp:taobao.com
 ```
 reg:.+(?=:)<br/>
 result:<br/>
-<b>https:</b>taobao.com
-<b>http:</b>taobao.com
-<b>ftp:</b>taobao.com
+<b>https</b>:taobao.com<br/>
+<b>http</b>:taobao.com<br/>
+<b>ftp</b>:taobao.com<br/>
