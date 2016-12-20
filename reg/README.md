@@ -102,5 +102,26 @@ result:
 (312) 559-0000
 (323) 553-1234
 (313) 553-1234
-
 ```
+##### 向前查找
+```html
+https:taobao.com
+http:taobao.com
+ftp:taobao.com
+```
+reg:.+(:)<br/>
+result:<br/>
+<b>https:</b>taobao.com
+<b>http:</b>taobao.com
+<b>ftp:</b>taobao.com
+<p>如果我们不想包含冒号</p>
+```html
+https:taobao.com
+http:taobao.com
+ftp:taobao.com
+```
+reg:.+(?=:)<br/>
+result:<br/>
+<b>https:</b>taobao.com
+<b>http:</b>taobao.com
+<b>ftp:</b>taobao.com
