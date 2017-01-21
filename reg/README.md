@@ -20,9 +20,11 @@ demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
 \D        非数字
 \s        空白
 \S        非空白
-.         除换行符与终止符的任意字符
+.         除换行符与终止符的任意字符   eg:用c.t匹配cot,cat,如果模式里包含一个点，需要在点前加“\”特殊转义字符，如.a..\.jpg,
+          以此类似，匹配斜杠也需要转义  \\
 [....]    括号内的任意字符
-[^...]    不包含括号内的任意字符
+[^...]    不包含括号内的任意字符  ^的效果将作用于字符集里的所有字符或字符区间，而不是后面紧跟的字符或字符区间
+-         这个字符在[]内表示范围，在[]外事普通字符，所以不需要被反斜杠转义
 ```
 eg:/[\s\d]/匹配任意空白符或者数字
 ##重复
@@ -31,7 +33,7 @@ eg:/[\s\d]/匹配任意空白符或者数字
 {m,}             至少m次
 {m}                  n次
 ?          匹配前一项0次或1次，也就是说前一项可选
-+                    至少1次
++                    至少1次  如果匹配+本身需要转义
 *                   0次或多次
 ```
 eg:/\w{3}\d?/ 匹配3个单词和一个可选数字<br/>
@@ -55,6 +57,7 @@ $    结尾
 \B   非边界
 (?=p)    零宽正向先行断言，接下来的字符与P匹配
 (?!p)     零宽正向先行断言，接下来的字符不与P匹配
+(?m)    分行匹配，必须放在行首    eg:(?m)^\s*//.*$  匹配所有注释
 ```
 ##修饰符
 ```javascript
@@ -62,4 +65,63 @@ i      不区分大小写
 g     全局
 m      多行
 ````
-   
+* 使用POSIX字符类
+```javascript
+[:xdigit:]      十六进制数，等价于[a-fA-F0-9]
+[:lower:]       任何一个小写字母
+[:upper:]       大写字母
+[:blank:]       空白符
+* 回溯引用：前后一致匹配
+eg:<[Hh][1-5]>.*?</[Hh][1-5]><br/>
+```html
+<h1>welcome to you come</h1>
+<h2>welcome to you come</h2>
+<h3>welcome to you come</h3>
+<h5>welcome to you come</h5>
+```
+分析：如果<[Hh][1-5]>.*</[Hh][1-5]>没有问号,则进入贪婪模式，从第一个h1匹配到/h5</br>
+<p>接下来我们看看这个例子</p>
+```html
+<h1>welcome to you come</h3>
+```
+这种情况也会匹配到</br>
+eg:<[Hh]([1-5])>.*?</[Hh]\1><br/>
+<span>可以把回溯引用看成一个变量</span>
+##### 回溯引用在替换中的应用
+```html
+313-555-1234
+312-559-0000
+323-553-1234
+313-553-1234
+```
+reg:(\d{3})(-)(\d{3})(-)(\d{4})<br/>
+replace:($1) $3-$5<br/>
+result:
+```html
+(313) 555-1234
+(312) 559-0000
+(323) 553-1234
+(313) 553-1234
+```
+##### 向前查找
+```html
+https:taobao.com
+http:taobao.com
+ftp:taobao.com
+```
+reg:.+(:)<br/>
+result:<br/>
+<b>https:</b>taobao.com<br/>
+<b>http:</b>taobao.com<br/>
+<b>ftp:</b>taobao.com<br/>
+<p>如果我们不想包含冒号</p>
+```html
+https:taobao.com
+http:taobao.com
+ftp:taobao.com
+```
+reg:.+(?=:)<br/>
+result:<br/>
+<b>https</b>:taobao.com<br/>
+<b>http</b>:taobao.com<br/>
+<b>ftp</b>:taobao.com<br/>
