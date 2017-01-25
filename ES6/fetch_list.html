@@ -1,0 +1,58 @@
+/**
+ * Sample React Native App
+ * https://github.com/facebook/react-native
+ * @flow
+ */
+
+import React, { Component } from 'react';
+import {
+  ListView,
+  ScrollView,
+  TextInput,
+  Image,
+  AppRegistry,
+  StyleSheet,
+  Text,
+  View
+} from 'react-native';
+var MOCKED_MOVIES_DATA = [
+  {title: '标题', year: '2015', posters: {thumbnail: 'http://i.imgur.com/UePbdph.jpg'}},
+];
+export default class test1 extends Component {
+ constructor(props) {
+    super(props);
+    this.state={
+      movies: new ListView.DataSource({rowHasChanged:(r1,r2) => r1 !== r2}),
+    };
+  }
+  componentDidMount() {
+        this.getMoviesFromApiAsync();
+    }
+  getMoviesFromApiAsync() {
+    return fetch('https://facebook.github.io/react-native/movies.json')
+      .then((response) => response.json())
+      .then((responseData) => {
+                this.setState({
+                    movies: this.state.movies.cloneWithRows(responseData.movies),
+                });
+              })
+      .catch((error) => {
+        console.error(error);
+      });
+  }
+  render() {
+    console.log(this.state.movies);
+    return (
+      <View style={{flex: 1, paddingTop: 22}}>
+        <ListView
+          dataSource={this.state.movies}
+          renderRow={(rowData) => <Text>{rowData.title}</Text>}
+        />
+      </View>
+    );
+  }
+}
+// 注册应用(registerComponent)后才能正确渲染
+// 注意：只把应用作为一个整体注册一次，而不是每个组件/模块都注册
+
+AppRegistry.registerComponent('test1', () => test1);
