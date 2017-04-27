@@ -29,6 +29,7 @@ var function1 =para1=>para1;   //只有一个参数
 var function2 =(para1,para2)=>para1+para2;   //多于一个参数，使用括号
 var function3 =()=>'I don't need para';   //无参数时
 //等价于下面的函数
+
 var fn1=function(para1){
 	return para1;
 }
@@ -50,6 +51,7 @@ var getObj=id=>(
 	}
 )
 ```
+
 ## A3 for in语句
 ```javascript
 var aArray=new Array();
@@ -74,6 +76,7 @@ for(var key in aArray){				//key拿到的是下标（将普通数组视为关联
 	console.log(aArray[key]);	//打印出苹果，香蕉
 }
 ```
+
 ## JSX的延展属性
 ```javascript
 var props={}
@@ -82,6 +85,7 @@ props.propB=y;
 var component=<Component {...props}>
 现在component这个JSX元素有了JSX变量所有的属性
 ```
+
 ## Promise机制
 <p>核心是Promise代表一个事件结果，任务有可能成功，也可能失败。Promise唯一需要的一个接口就是then()方法，用来注册当promise成功或失败是的回调函数</p>
 ```javascript
