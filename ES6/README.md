@@ -22,7 +22,7 @@ function getFullName({giveName,familyName}){
 	return giveNmae+'.'+familyName;
 }
 ```
-##A2箭头函数
+## A2箭头函数
 <p>不需要函数名，代码简短的函数</p>
 ```javascript
 var function1 =para1=>para1;   //只有一个参数
@@ -50,7 +50,7 @@ var getObj=id=>(
 	}
 )
 ```
-##A3 for in语句
+## A3 for in语句
 ```javascript
 var aArray=new Array();
 aArray[0]="香蕉";
@@ -74,7 +74,7 @@ for(var key in aArray){				//key拿到的是下标（将普通数组视为关联
 	console.log(aArray[key]);	//打印出苹果，香蕉
 }
 ```
-##JSX的延展属性
+## JSX的延展属性
 ```javascript
 var props={}
 props.propA=x;
@@ -82,7 +82,7 @@ props.propB=y;
 var component=<Component {...props}>
 现在component这个JSX元素有了JSX变量所有的属性
 ```
-##Promise机制
+## Promise机制
 <p>核心是Promise代表一个事件结果，任务有可能成功，也可能失败。Promise唯一需要的一个接口就是then()方法，用来注册当promise成功或失败是的回调函数</p>
 ```javascript
 this.anAsyncFunction(para).then(
