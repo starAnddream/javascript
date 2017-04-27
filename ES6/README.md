@@ -88,6 +88,7 @@ var component=<Component {...props}>
 
 ## Promise机制
 <p>核心是Promise代表一个事件结果，任务有可能成功，也可能失败。Promise唯一需要的一个接口就是then()方法，用来注册当promise成功或失败是的回调函数</p>
+
 ```javascript
 this.anAsyncFunction(para).then(
 	(para)=>{
