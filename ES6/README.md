@@ -12,7 +12,8 @@ let {objA,objB,objC}={
 ```
 <p>在数组的解构赋值中，变量的取值由位置决定</p>
 <p>在对象的解构赋值中，变量的取值与位置无关</p>
-````javascript
+
+```javascript
 可以在函数中使用解构函数
 function getFullName(persion){
 	return persion.giveNmae+'.'+persion.familyName;
@@ -20,10 +21,10 @@ function getFullName(persion){
 function getFullName({giveName,familyName}){
 	return giveNmae+'.'+familyName;
 }
-````
+```
 ##A2箭头函数
 <p>不需要函数名，代码简短的函数</p>
-````javascript
+```javascript
 var function1 =para1=>para1;   //只有一个参数
 var function2 =(para1,para2)=>para1+para2;   //多于一个参数，使用括号
 var function3 =()=>'I don't need para';   //无参数时
@@ -72,7 +73,7 @@ for(var key in aArray){				//key拿到的是下标（将普通数组视为关联
 	console.log(key);			//打印出first,second
 	console.log(aArray[key]);	//打印出苹果，香蕉
 }
-````
+```
 ##JSX的延展属性
 ```javascript
 var props={}
