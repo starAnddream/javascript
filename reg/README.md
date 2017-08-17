@@ -1,4 +1,4 @@
-#javascript正则
+# javascript正则
 * javascript中的正则表达式有两种<br>
 对象构造函数
 ```javascript
@@ -9,10 +9,10 @@ var reg1=new RegExp("[A-Z]","g");
 var reg2=/[A-Z]/g
 ```
 第二种可以直接使用，无须处理，是最快速的方法。所以尽量避免使用RegExp对象，除非要动态生成正则表达式
-###replace还有一种鲜为人知的用法，就是第二个参数传函数
+### replace还有一种鲜为人知的用法，就是第二个参数传函数
 每出现一次匹配到的字符串，就执行一遍该函数<br>
 demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
-##字符类
+## 字符类
 ```javascript
 \w        任何ASCII字符等价于【a-zA-Z0-9】
 \W        非ASCII字符
@@ -27,7 +27,7 @@ demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
 -         这个字符在[]内表示范围，在[]外事普通字符，所以不需要被反斜杠转义
 ```
 eg:/[\s\d]/匹配任意空白符或者数字
-##重复
+## 重复
 ```javascript
 {m,n}      前一项至少m次，不超过n次
 {m,}             至少m次
@@ -42,14 +42,14 @@ eg:/\w{3}\d?/ 匹配3个单词和一个可选数字<br/>
 在使用 * 和？时，由于这些字符可能匹配0个字符，因此，无论是什么都能匹配。如"/a* /"能匹配“bbb”<br/>
 解决办法：在待匹配的字符后跟随一个问号？ “??”,"+?","*?"{1,5}?
 
-##选择，分组，引用
+## 选择，分组，引用
 ```javascript
 |       选择左边或右边
 (...)    组合
 (?:....)  只组合
 \n
 ```
-##制定匹配位置
+## 制定匹配位置
 ```javascript
 $    结尾
 ^    开头
@@ -59,7 +59,7 @@ $    结尾
 (?!p)     零宽正向先行断言，接下来的字符不与P匹配
 (?m)    分行匹配，必须放在行首    eg:(?m)^\s*//.*$  匹配所有注释
 ```
-##修饰符
+## 修饰符
 ```javascript
 i      不区分大小写
 g     全局
