@@ -1,11 +1,11 @@
 # javascript正则
 * javascript中的正则表达式有两种<br>
 对象构造函数
-```javascript
+``` javascript
 var reg1=new RegExp("[A-Z]","g");
 ```
 直接量表达式
-```javascript
+``` javascript
 var reg2=/[A-Z]/g
 ```
 第二种可以直接使用，无须处理，是最快速的方法。所以尽量避免使用RegExp对象，除非要动态生成正则表达式
@@ -13,7 +13,7 @@ var reg2=/[A-Z]/g
 每出现一次匹配到的字符串，就执行一遍该函数<br>
 demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
 ## 字符类
-```javascript
+``` javascript
 \w        任何ASCII字符等价于【a-zA-Z0-9】
 \W        非ASCII字符
 \d        数字 [0-9]
@@ -28,7 +28,7 @@ demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
 ```
 eg:/[\s\d]/匹配任意空白符或者数字
 ## 重复
-```javascript
+``` javascript
 {m,n}      前一项至少m次，不超过n次
 {m,}             至少m次
 {m}                  n次
@@ -43,14 +43,14 @@ eg:/\w{3}\d?/ 匹配3个单词和一个可选数字<br/>
 解决办法：在待匹配的字符后跟随一个问号？ “??”,"+?","*?"{1,5}?
 
 ## 选择，分组，引用
-```javascript
+``` javascript
 |       选择左边或右边
 (...)    组合
 (?:....)  只组合
 \n
 ```
 ## 制定匹配位置
-```javascript
+``` javascript
 $    结尾
 ^    开头
 \b   边界
@@ -60,20 +60,20 @@ $    结尾
 (?m)    分行匹配，必须放在行首    eg:(?m)^\s*//.*$  匹配所有注释
 ```
 ## 修饰符
-```javascript
+``` javascript
 i      不区分大小写
 g     全局
 m      多行
 ````
 * 使用POSIX字符类
-```javascript
+``` javascript
 [:xdigit:]      十六进制数，等价于[a-fA-F0-9]
 [:lower:]       任何一个小写字母
 [:upper:]       大写字母
 [:blank:]       空白符
 * 回溯引用：前后一致匹配
 eg:<[Hh][1-5]>.*?</[Hh][1-5]><br/>
-```html
+``` html
 <h1>welcome to you come</h1>
 <h2>welcome to you come</h2>
 <h3>welcome to you come</h3>
@@ -81,7 +81,7 @@ eg:<[Hh][1-5]>.*?</[Hh][1-5]><br/>
 ```
 分析：如果<[Hh][1-5]>.*</[Hh][1-5]>没有问号,则进入贪婪模式，从第一个h1匹配到/h5</br>
 <p>接下来我们看看这个例子</p>
-```html
+``` html
 <h1>welcome to you come</h3>
 ```
 这种情况也会匹配到</br>
@@ -97,14 +97,14 @@ eg:<[Hh]([1-5])>.*?</[Hh]\1><br/>
 reg:(\d{3})(-)(\d{3})(-)(\d{4})<br/>
 replace:($1) $3-$5<br/>
 result:
-```html
+``` html
 (313) 555-1234
 (312) 559-0000
 (323) 553-1234
 (313) 553-1234
 ```
 ##### 向前查找
-```html
+``` html
 https:taobao.com
 http:taobao.com
 ftp:taobao.com
@@ -115,7 +115,7 @@ result:<br/>
 <b>http:</b>taobao.com<br/>
 <b>ftp:</b>taobao.com<br/>
 <p>如果我们不想包含冒号</p>
-```html
+``` html
 https:taobao.com
 http:taobao.com
 ftp:taobao.com
