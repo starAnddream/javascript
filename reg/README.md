@@ -14,7 +14,7 @@ var reg2=/[A-Z]/g
 demo:https://github.com/starAnddream/javascript/blob/master/reg/replace.html
 ## 字符类
 ``` javascript
-\w        任何ASCII字符等价于【a-zA-Z0-9】
+\w        任何ASCII字符等价于[a-zA-Z0-9]
 \W        非ASCII字符
 \d        数字 [0-9]
 \D        非数字
@@ -31,16 +31,16 @@ eg:/[\s\d]/匹配任意空白符或者数字
 ``` javascript
 {m,n}      前一项至少m次，不超过n次
 {m,}             至少m次
-{m}                  n次
+{m}                  m次
 ?          匹配前一项0次或1次，也就是说前一项可选
 +                    至少1次  如果匹配+本身需要转义
 *                   0次或多次
 ```
-eg:/\w{3}\d?/ 匹配3个单词和一个可选数字<br/>
-  /[^(]*/      匹配不包含左括号的0个或多个字符
+* eg:/\w{3}\d?/ 匹配3个单词和一个可选数字
+*  /[^(]*/      匹配不包含左括号的0个或多个字符
 * 非贪婪的重复
 在使用 * 和？时，由于这些字符可能匹配0个字符，因此，无论是什么都能匹配。如"/a* /"能匹配“bbb”<br/>
-解决办法：在待匹配的字符后跟随一个问号？ “??”,"+?","*?"{1,5}?
+解决办法：在待匹配的字符后跟随一个问号？ “??”,"*?"{1,5}?
 
 ## 选择，分组，引用
 ``` javascript
@@ -104,25 +104,56 @@ result:
 (323) 553-1234
 (313) 553-1234
 ```
-##### 向前查找
-``` html
-https:taobao.com
-http:taobao.com
-ftp:taobao.com
+#### 向前匹配与向后匹配
+```js
+// 向后匹配
+// (?=)  匹配
+// (?!)  不匹配
+var str = "abcx1 abcy2 abcz3";
+
+// 匹配后边是y的abc
+a = preg_replace('/abc(?=y)/', '0', str);// abcx1 0y2 abcz3
+
+// 匹配后边不是y的abc
+b = preg_replace('/abc(?!y)/', '1', str);// 1x1 abcy2 1z3
 ```
-reg:.+(:)<br/>
-result:<br/>
-<b>https:</b>taobao.com<br/>
-<b>http:</b>taobao.com<br/>
-<b>ftp:</b>taobao.com<br/>
-<p>如果我们不想包含冒号</p>
-``` html
-https:taobao.com
-http:taobao.com
-ftp:taobao.com
+// ===================================
+```js
+// 向前匹配 注意有小于号
+// (?<=)  匹配
+// (?<!)  不匹配
+
+var str = "1xabc 2abc 3zabc";
+
+// 匹配前一个字符是数字的abc
+var a = replace('/(?<=\d)abc/', '0', str);// 1xabc 20 3zabc
+
+// 匹配前一个字符不是数字的abc
+var b = replace('/(?<!\d)abc/', '1', str);// 1x1 2abc 3z1
 ```
-reg:.+(?=:)<br/>
-result:<br/>
-<b>https</b>:taobao.com<br/>
-<b>http</b>:taobao.com<br/>
-<b>ftp</b>:taobao.com<br/>
+#### 正则对象方法
+1. test()
+* arg1:被检测字符串
+* return: true/false
+2. exec()
+* arg1:被检测字符串
+* return:null/array
+##### array:
+* index:声明匹配文本的第一个文本位置
+* input:存放被检索的字符串
+##### 非全局调用，返回的数组res
+* 第一个元素是与正则表达式匹配的文本
+* 第二个元素是正则对象与第一个子表达式相匹配的文本(如果有分组)
+###### res.index匹配结果的第一个字符
+#### 字符串对象方法
+1. search()
+* arg1:regexp
+* return:如果没有找到任何匹配的子串，则返回 -1。
+2. match()
+* arg1:regexp
+* return:match() 将返回 null。否则，它将返回一个数组,与exec非全局调用下一致
+###### 全局调用没有index，没有分组信息，没有lastIndex
+3. split()
+4. replace()
+* 可以加回调函数
+
