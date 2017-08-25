@@ -1,0 +1,24 @@
+<script type="text/javascript">
+var fn = function(num) {
+    return new Promise(function(resolve, reject) {
+        if (typeof num == 'number') {
+            resolve(num);
+        } else {
+            reject('TypeError');
+        }
+    })
+}
+ 
+fn(2).then(function(num) {
+    console.log('first: ' + num);
+    return num + 1;  //if havn't return,return a promise Object
+})
+.then(function(num) {
+    console.log('second: ' + num);
+    return num + 1;
+})
+.then(function(num) {
+    console.log('third: ' + num);
+    return num + 1;
+});
+</script>
