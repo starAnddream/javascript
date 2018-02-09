@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+    <div id="main" style="width: 2000px;height:400px;"></div>
+    <!-- <script src="http://upcdn.b0.upaiyun.com/libs/jquery/jquery-2.0.2.min.js"> -->
+    <script type="text/javascript" src="./log.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/4.0.2/echarts-en.common.js"></script>
+    <script type="text/javascript">
+        let timeData = Object.values(data);
+        console.log(timeData);
+        let index = Object.keys(data)
+        var myChart = echarts.init(document.getElementById('main'));
+
+        // 指定图表的配置项和数据
+        var option = {
+            title: {
+                text: '日志分析可视化'
+            },
+            tooltip: {},
+            legend: {
+                data:['时间微妙']
+            },
+            xAxis: {
+                type: 'category',
+                data: index
+            },
+            yAxis: {},
+            series: [{
+                name: '耗时',
+                type: 'line',
+                data: timeData,
+
+            }]
+        };
+
+        // 使用刚指定的配置项和数据显示图表。
+        myChart.setOption(option);
+    </script>
+</body>
+</html>
